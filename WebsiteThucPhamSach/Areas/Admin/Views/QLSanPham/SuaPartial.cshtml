@@ -1,0 +1,52 @@
+﻿@using WebsiteThucPhamSach.Models
+@model SANPHAM
+
+
+<div class="col-lg-8 add-color">
+    @using (Html.BeginForm("SuaSanPham", "QLSanPham", FormMethod.Post))
+    {
+        <div class="frame-sp custom-col">
+            <h2>Sửa sản phẩm</h2>
+            <div class="col-lg-6">
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.MASP, new { @class = "textboxchung", @placeholder = "Mã sản phẩm", disabled="disabled" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.TENSP, new { @class = "textboxchung", @placeholder = "Tên sản phẩm" })
+                </div>
+                <div class="layout">
+                    <input name="file" type="file" placeholder="Ảnh" />
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.XUATSU, new { @class = "textboxchung", @placeholder = "Xuất sứ" })
+                </div>
+                <div class="layout">
+                    @*@Html.TextAreaFor(n => n.MOTA, new { @class = "ckeditor", @placeholder = "Mô tả" })*@
+                    @Html.TextAreaFor(n => n.MOTA, new { @class = "textboxchung-custom", @placeholder = "Mô tả" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.GIASP, new { @class = "textboxchung", @placeholder = "Giá" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.GIAMGIA, new { @class = "textboxchung", @placeholder = "Giảm giá" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.SPMOI, new { @class = "textboxchung", @placeholder = "Sản phẩm mới" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.MADM, new { @class = "textboxchung", @placeholder = "Mã danh mục" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.LUOTXEM, new { @class = "textboxchung", @placeholder = "Lượt xem" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.SOLUONG, new { @class = "textboxchung", @placeholder = "Số lượng" })
+                </div>
+                <div class="layout">
+                    <input id="btnCapNhat" type="submit" class="btn btn-primary" value="Cập nhật" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

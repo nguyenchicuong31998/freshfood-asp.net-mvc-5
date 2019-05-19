@@ -1,0 +1,116 @@
+﻿@using WebsiteThucPhamSach.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<ADMIN>
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/CssAdmin/CssAdmin.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<div class="tieude-sp">
+    @ViewBag.Title
+</div>
+<a id="btnAdd" href="#" class="btn btn-info">Thêm Admin</a>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã Admin</th>
+                <th>Tên</th>
+                <th>Ngày sinh</th>
+                <th>Giới tính</th>
+                <th>Địa chỉ</th>
+                <th>Email</th>
+                <th>Mật khẩu</th>
+                <th>Trạng thái</th>
+                <th>Công cụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var name = "";
+                if (item.TRANGTHAI == true)
+                {
+                    name = "Bật";
+                }
+                else
+                {
+                    name = "Tắt";
+                }
+            <tr>
+                <td>@item.MAAD</td>
+                <td>@item.TENAD</td>
+                <td>@item.NGAYSINH.Value.ToString("dd/MM/yyyy")</td>
+                <td>@item.GIOITINH</td>
+                <td>@item.DIACHI</td>
+                <td>@item.EMAIL</td>
+                <td>@item.MATKHAU</td>
+                <td>
+                    <input type="submit" class="trangthai btn btn-info" data-id="@item.MAAD" value="@name" />
+                </td>
+                <td>
+                    <a href="#" data-id="@item.MAAD" class="btnUpdate" data-toggle="tooltip" title="Sửa"><img src="~/Image/edit.png" alt="Update" /></a>
+                    <a href="#" data-id="@item.MAAD" onclick="return ThongBao()" class="btnXoa" data-toggle="tooltip" title="Xóa"><img src="~/Image/delete.png" alt="Delete" /></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    @*@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount *@
+    @Html.PagedListPager(Model, page => Url.Action("Admin", new { page = page }))
+</div>
+<div id="PartialView">
+
+</div>
+<script type="text/javascript">
+    function ThongBao() {
+        if (confirm("Bạn chắc chắn muốn xóa sản phẩm này?")) {
+            return true;
+        }
+        else {
+            return res.status == false;
+        }
+    }
+    $(document).ready(function () {
+        $('.btnXoa').off('click').on('click', function () {
+            var MAAD = $(this).data('id');
+            $.ajax({
+                data: { MAAD: MAAD },
+                url: '/Admin/QLAdmin/Xoa',
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/Admin/QLAdmin/Admin";
+                        alert("Bạn đã xóa thành công");
+                    }
+                }
+            })
+        })
+        $('.btnUpdate').off('click').on('click', function () {
+            var MAAD = $(this).data('id');
+            $('#PartialView').load("/Admin/QLAdmin/SuaADPartial", { MAAD: MAAD });
+        })
+        $('#btnAdd').off('click').on('click', function () {
+            $('#PartialView').load("/Admin/QLAdmin/ThemADPartial");
+        })
+        var trangthai = $('.trangthai').val();
+        $('.trangthai').click(function () {
+            $.ajax({
+                url: "/Admin/QLAdmin/Bat",
+                data: { MAAD: $(this).data('id') },
+                dataType: "Json",
+                type: "POST",
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/Admin/QLAdmin/Admin";
+                    }
+                }
+            })
+        });
+    });
+</script>
+

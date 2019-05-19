@@ -1,0 +1,112 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html {
+    overflow-x: hidden !important;
+}
+
+.title {
+    font-family: "Gotham",sans-serif;
+    margin: 0;
+    font-size: 14px;
+    padding: 10px 5px 10px;
+    border-radius: 0;
+    line-height: 24px;
+    background-color: #fff;
+    border-bottom: solid 1px #ebebeb;
+}
+
+.gird-thongtin {
+    display: grid;
+}
+
+.columns-thongtin {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.title-wrap {
+    font-size: large !important;
+    font-family: monospace !important;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+    .title-wrap a {
+        text-decoration: none;
+        color: black;
+    }
+
+        .title-wrap a:hover {
+            text-decoration: none;
+            color: #9bd031;
+        }
+
+.title-thongtin {
+    margin-bottom: 20px;
+}
+
+.input-row {
+    width: 350px;
+    margin-bottom: 20px;
+}
+
+.input-share {
+    width: 100%;
+    height: 45px;
+    padding: 0 20px;
+    color: #333;
+    font-size: 17px;
+    line-height: 45px;
+    border: 2px solid #ebebeb !important;
+    border-radius: 0px;
+    font-family: sans-serif;
+    box-shadow: none !important;
+    border-radius: 5px;
+}
+
+.forget-passwork {
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+}
+
+    .forget-passwork:hover {
+        color: black;
+        font-size: 14px;
+    }
+
+.custom-luu {
+    font-size: 18px;
+    color: white;
+    background-color: #9bd031;
+    height: 45px;
+}
+
+    .custom-luu:hover {
+        color: #9bd031;
+        border: 1px solid #9bd031;
+        background-color: white;
+    }
+
+.custom-space {
+    font-size: 15px;
+}
+.input-share-area {
+    width: 100%;
+    height: 45px;
+    padding: 0 20px;
+    height: 80px;
+    color: #333;
+    font-size: 17px;
+    line-height: 45px;
+    border: 2px solid #ebebeb !important;
+    border-radius: 0px;
+    font-family: sans-serif;
+    box-shadow: none !important;
+    border-radius: 5px;
+}

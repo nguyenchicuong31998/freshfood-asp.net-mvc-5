@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c9619f623bd54d7c8b3798ca3433dc58" Name="Diagram1">
+        <EntityTypeShape EntityType="QLTHUCPHAMModel.DANHMUC" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTHUCPHAMModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTHUCPHAMModel.MENU" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="QLTHUCPHAMModel.FK__DANHMUC__MAMN__145C0A3F" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLTHUCPHAMModel.QUANGCAO" Width="1.5" PointX="4.375" PointY="3.25" />
+        <EntityTypeShape EntityType="QLTHUCPHAMModel.SANPHAM" Width="1.5" PointX="5.25" PointY="7" />
+        <AssociationConnector Association="QLTHUCPHAMModel.FK__SANPHAM__MADM__4316F928" />
+        <EntityTypeShape EntityType="QLTHUCPHAMModel.ADMIN" Width="1.5" PointX="6.375" PointY="1" />
+        <EntityTypeShape EntityType="QLTHUCPHAMModel.CTHOADON" Width="1.5" PointX="7.5" PointY="7.25" />
+        <EntityTypeShape EntityType="QLTHUCPHAMModel.HOADON" Width="1.5" PointX="3" PointY="6.5" />
+        <EntityTypeShape EntityType="QLTHUCPHAMModel.TINTUC" Width="1.5" PointX="8.625" PointY="1.125" />
+        <AssociationConnector Association="QLTHUCPHAMModel.FK__TINTUC__MAAD__52593CB8" />
+        <AssociationConnector Association="QLTHUCPHAMModel.FK__CTHOADON__MAHD__4CA06362" />
+        <AssociationConnector Association="QLTHUCPHAMModel.FK__CTHOADON__MASP__4D94879B" />
+        <AssociationConnector Association="QLTHUCPHAMModel.FK__HOADON__MAKH__49C3F6B7" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

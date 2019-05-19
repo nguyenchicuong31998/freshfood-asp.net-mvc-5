@@ -1,0 +1,59 @@
+﻿<link href="~/Content/CssClient/CssFooter.css" rel="stylesheet" />
+@{
+    string Logo = Html.Action("GetQC", "Header", new { ThuTuQC = 1 }).ToString();
+}
+<div class="container gird-footer">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-4 col-sm-12 col-md-6 row-footer">
+                <div class="information-footer">
+                    <div class="logo-footer child-column-footer">
+                        <a href="#">
+                            <img src="@Url.Content(Logo)" alt="logo">
+                        </a>
+                    </div>
+                    <div class="history-footer child-column-footer">
+                        <span>Được thành lập vào ngày 05/03/2019 với niềm đam mê và khát vọng thành công trong lĩnh vực TMĐT</span>
+                    </div>
+                    <div class="support-footer child-column-footer">
+                        <p>107/A Đoàn Thị Liên, Phú Lợi, TP.Thủ Dầu Một</p>
+                        <p>nguyenchicuong31998@gmail.com</p>
+                        <p>0972612445</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 col-md-6 guid-policy-footer">
+                <div class="share-footer">
+                    <div class="guid-policy">
+                        <h5><strong>HƯỚNG DẪN</strong></h5>
+                        <ul class="list-group">
+                            <li class="list-group-item"><a>Mua hàng</a></li>
+                            <li class="list-group-item"><a>Kỹ thuật</a></li>
+                            <li class="list-group-item"><a href="~/Dang-Ky">Đăng ký</a></li>
+                            <li class="list-group-item"><a>Thanh toán</a></li>
+                        </ul>
+                    </div>
+                    <div class="guid-policy">
+                        <h5><strong>CHÍNH SÁCH</strong></h5>
+                        <ul class="list-group">
+                            <li class="list-group-item"><a>Đổi trả hàng</a></li>
+                            <li class="list-group-item"><a>Đảm bảo chất lượng</a></li>
+                            <li class="list-group-item"><a>Giá luôn tốt nhất</a></li>
+                            <li class="list-group-item"><a>Khách hàng thân thiết</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 row-footer">
+                <div class="search-footer">
+                    <h5><strong>TỪ KHÓA HOT</strong></h5>
+                    <div class="support-footer child-column-footer">
+                        <p>Hoa Bốn Mùa</p>
+                        <p>Vitamin</p>
+                        <p>Bưởi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

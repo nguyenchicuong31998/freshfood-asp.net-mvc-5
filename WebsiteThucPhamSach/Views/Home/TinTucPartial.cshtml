@@ -1,0 +1,19 @@
+﻿@using WebsiteThucPhamSach.Models
+@model List<TINTUC>
+
+
+@foreach (var item in Model)
+{
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="frame-tintuc">
+                <a href="~/Chi-Tiet-Tin-Tuc?MATT=@item.MATT"><img src="@Url.Content("~/Image/"+  item.ANH)" alt="Lỗi" class="img-responsive img-thumbnail custom-border"></a>
+                <div class="content-tintuc">
+                    <a href="~/Chi-Tiet-Tin-Tuc?MATT=@item.MATT"><p class="title-tintuc">@item.TIEUDE</p></a>
+                    <p class="content-item">
+                        @item.MOTA
+                    </p>
+                    <a href="~/Chi-Tiet-Tin-Tuc?MATT=@item.MATT" class="btn btn-success">Chi tiết</a>
+                </div>
+            </div>
+        </div>
+}

@@ -1,0 +1,48 @@
+﻿@using WebsiteThucPhamSach.Models
+@model TINTUC
+
+@Scripts.Render("~/bundles/ckeditor")
+<div class="col-lg-8 add-color">
+    @using (Html.BeginForm("SuaTinTuc", "QLTinTuc", FormMethod.Post))
+    {
+        <div class="frame-sp custom-col">
+            <h2>Sửa tin tức</h2>
+            <div class="col-lg-6">
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.MATT, new { @class = "textboxchung", @placeholder = "Mã tin tức", disabled = "disabled" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.MAAD, new { @class = "textboxchung", @placeholder = "Mã Admin" })
+                </div>
+                <div class="layout">
+                    @Html.TextAreaFor(n => n.TIEUDE, new { @class = "textboxchung-custom", @placeholder = "Tiêu đề" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.ANH, new { @class = "textboxchung", @placeholder = "Ảnh" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.NGAYDANG, new { @class = "textboxchung", @placeholder = "Ngày đăng" })
+                </div>
+                <div class="layout">
+                    @Html.TextAreaFor(n => n.MOTA, new { @class = "textboxchung-custom", @placeholder = "Mô tả" })
+                </div>
+                <div class="layout">
+                    @*@Html.TextAreaFor(n => n.NOIDUNG, new { @class = "ckeditor textboxchung-custom", @placeholder = "Nội dung" })*@
+                    @Html.TextAreaFor(n => n.NOIDUNG, new { @id = "FullDescription", @placeholder = "Nội dung" })
+                    <script>
+                          CKEDITOR.replace("FullDescription");
+                    </script>
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.NOIBAT, new { @class = "textboxchung", @placeholder = "Nổi bật" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.LUOTXEM, new { @class = "textboxchung", @placeholder = "Lượt xem" })
+                </div>
+                <div class="layout">
+                    <input id="btnCapNhat" type="submit" class="btn btn-primary" value="Cập nhật" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

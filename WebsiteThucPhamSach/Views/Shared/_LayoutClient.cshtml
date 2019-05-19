@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @Html.Action("HeaderPartial", "Header")
+    @Html.Action("NavbarPartial", "Navbar")
+    <div class="body-content">
+        @RenderBody()
+    </div>
+    <footer>
+        @Html.Action("FooterPartial","Footer")
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.icon_user').click(function () {
+                $('.login').toggleClass("hienthi");
+            });
+            $('.caret').click(function () {
+                $('.information_login').toggleClass("hienthi");
+            });
+        });
+    </script>
+</body>
+</html>

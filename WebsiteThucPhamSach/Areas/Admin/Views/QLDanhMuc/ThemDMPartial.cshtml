@@ -1,0 +1,24 @@
+﻿@using WebsiteThucPhamSach.Models
+@model DANHMUC
+
+
+<div class="col-lg-8 add-color">
+    @using (Html.BeginForm("ThemDanhMuc", "QLDanhMuc", FormMethod.Post))
+    {
+        <div class="frame-sp custom-col">
+            <h2>Thêm danh mục</h2>
+            <div class="col-lg-6">
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.TENDM, new { @class = "textboxchung", @placeholder = "Tên danh mục" })
+                </div>
+                <div class="layout">
+                    @Html.DropDownList("MAMN",(IEnumerable<SelectListItem>)ViewBag.Menu, new { @class = "form-control" })
+                </div>
+
+                <div class="layout">
+                    <input style="font-size:18px;" id="btnthem" type="submit" class="btn btn-info" value="Thêm" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

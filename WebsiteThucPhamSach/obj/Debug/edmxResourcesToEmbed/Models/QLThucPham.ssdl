@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLTHUCPHAMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ADMIN">
+    <Key>
+      <PropertyRef Name="MAAD" />
+    </Key>
+    <Property Name="MAAD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENAD" Type="nvarchar" MaxLength="50" />
+    <Property Name="NGAYSINH" Type="datetime" />
+    <Property Name="GIOITINH" Type="nvarchar" MaxLength="5" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="200" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+    <Property Name="MATKHAU" Type="varchar" MaxLength="30" />
+    <Property Name="TRANGTHAI" Type="bit" />
+  </EntityType>
+  <EntityType Name="CTHOADON">
+    <Key>
+      <PropertyRef Name="MAHD" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MAHD" Type="int" Nullable="false" />
+    <Property Name="MASP" Type="int" Nullable="false" />
+    <Property Name="TENSP" Type="nvarchar" MaxLength="20" />
+    <Property Name="SOLUONG" Type="int" />
+    <Property Name="DONGIA" Type="decimal" Precision="20" Scale="0" />
+    <Property Name="THANHTIEN" Type="decimal" Precision="20" Scale="0" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="DANHMUC">
+    <Key>
+      <PropertyRef Name="MADM" />
+    </Key>
+    <Property Name="MADM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENDM" Type="nvarchar" MaxLength="100" />
+    <Property Name="MAMN" Type="int" />
+    <Property Name="TRANGTHAI" Type="bit" />
+  </EntityType>
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="MAHD" />
+    </Key>
+    <Property Name="MAHD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MAKH" Type="int" />
+    <Property Name="TENKH" Type="nvarchar" MaxLength="30" />
+    <Property Name="DIENTHOAI" Type="varchar" MaxLength="12" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="200" />
+    <Property Name="DONGIA" Type="decimal" Precision="20" Scale="0" />
+    <Property Name="NGAYDAT" Type="datetime" />
+    <Property Name="NGAYGIAO" Type="datetime" />
+    <Property Name="HTTHANHTOAN" Type="nvarchar" MaxLength="100" />
+    <Property Name="HTGIAOHANG" Type="nvarchar" MaxLength="100" />
+    <Property Name="TRANGTHAI" Type="bit" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HOTEN" Type="nvarchar" MaxLength="30" />
+    <Property Name="DIENTHOAI" Type="varchar" MaxLength="15" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="30" />
+    <Property Name="MATKHAU" Type="varchar" MaxLength="30" />
+    <Property Name="GIOITINH" Type="nvarchar" MaxLength="5" />
+    <Property Name="NGAYSINH" Type="datetime" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="300" />
+    <Property Name="TRANGTHAI" Type="bit" />
+  </EntityType>
+  <EntityType Name="MENU">
+    <Key>
+      <PropertyRef Name="MAMN" />
+    </Key>
+    <Property Name="MAMN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENMN" Type="nvarchar" MaxLength="50" />
+    <Property Name="HREF" Type="varchar" MaxLength="100" />
+    <Property Name="TRANGTHAI" Type="bit" />
+  </EntityType>
+  <EntityType Name="QUANGCAO">
+    <Key>
+      <PropertyRef Name="MAQC" />
+    </Key>
+    <Property Name="MAQC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENQC" Type="nvarchar" MaxLength="100" />
+    <Property Name="ANHQC" Type="varchar" MaxLength="100" />
+    <Property Name="HREF" Type="varchar" MaxLength="100" />
+    <Property Name="THUTUQC" Type="smallint" />
+    <Property Name="TRANGTHAI" Type="bit" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENSP" Type="nvarchar" MaxLength="150" />
+    <Property Name="ANHSP" Type="varchar" MaxLength="200" />
+    <Property Name="XUATSU" Type="nvarchar" MaxLength="100" />
+    <Property Name="MOTA" Type="nvarchar(max)" />
+    <Property Name="GIASP" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="GIAMGIA" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="SPMOI" Type="smallint" />
+    <Property Name="MADM" Type="int" />
+    <Property Name="LUOTXEM" Type="int" />
+    <Property Name="SOLUONG" Type="int" />
+  </EntityType>
+  <EntityType Name="TINTUC">
+    <Key>
+      <PropertyRef Name="MATT" />
+      <PropertyRef Name="MAAD" />
+    </Key>
+    <Property Name="MATT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MAAD" Type="int" Nullable="false" />
+    <Property Name="TIEUDE" Type="nvarchar" MaxLength="200" />
+    <Property Name="ANH" Type="varchar" MaxLength="200" />
+    <Property Name="NGAYDANG" Type="datetime" />
+    <Property Name="MOTA" Type="nvarchar" MaxLength="300" />
+    <Property Name="NOIDUNG" Type="nvarchar(max)" />
+    <Property Name="NOIBAT" Type="int" />
+    <Property Name="LUOTXEM" Type="int" />
+  </EntityType>
+  <Association Name="FK__CTHOADON__MAHD__74AE54BC">
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+    <End Role="CTHOADON" Type="Self.CTHOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="MAHD" />
+      </Principal>
+      <Dependent Role="CTHOADON">
+        <PropertyRef Name="MAHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTHOADON__MASP__75A278F5">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CTHOADON" Type="Self.CTHOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="CTHOADON">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DANHMUC__MAMN__145C0A3F">
+    <End Role="MENU" Type="Self.MENU" Multiplicity="0..1" />
+    <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU">
+        <PropertyRef Name="MAMN" />
+      </Principal>
+      <Dependent Role="DANHMUC">
+        <PropertyRef Name="MAMN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADON__MAKH__71D1E811">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SANPHAM__MADM__4316F928">
+    <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="0..1" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DANHMUC">
+        <PropertyRef Name="MADM" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="MADM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TINTUC__MAAD__52593CB8">
+    <End Role="ADMIN" Type="Self.ADMIN" Multiplicity="1" />
+    <End Role="TINTUC" Type="Self.TINTUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADMIN">
+        <PropertyRef Name="MAAD" />
+      </Principal>
+      <Dependent Role="TINTUC">
+        <PropertyRef Name="MAAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLTHUCPHAMModelStoreContainer">
+    <EntitySet Name="ADMIN" EntityType="Self.ADMIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTHOADON" EntityType="Self.CTHOADON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DANHMUC" EntityType="Self.DANHMUC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MENU" EntityType="Self.MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUANGCAO" EntityType="Self.QUANGCAO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TINTUC" EntityType="Self.TINTUC" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CTHOADON__MAHD__74AE54BC" Association="Self.FK__CTHOADON__MAHD__74AE54BC">
+      <End Role="HOADON" EntitySet="HOADON" />
+      <End Role="CTHOADON" EntitySet="CTHOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTHOADON__MASP__75A278F5" Association="Self.FK__CTHOADON__MASP__75A278F5">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="CTHOADON" EntitySet="CTHOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DANHMUC__MAMN__145C0A3F" Association="Self.FK__DANHMUC__MAMN__145C0A3F">
+      <End Role="MENU" EntitySet="MENU" />
+      <End Role="DANHMUC" EntitySet="DANHMUC" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADON__MAKH__71D1E811" Association="Self.FK__HOADON__MAKH__71D1E811">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="HOADON" EntitySet="HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SANPHAM__MADM__4316F928" Association="Self.FK__SANPHAM__MADM__4316F928">
+      <End Role="DANHMUC" EntitySet="DANHMUC" />
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TINTUC__MAAD__52593CB8" Association="Self.FK__TINTUC__MAAD__52593CB8">
+      <End Role="ADMIN" EntitySet="ADMIN" />
+      <End Role="TINTUC" EntitySet="TINTUC" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

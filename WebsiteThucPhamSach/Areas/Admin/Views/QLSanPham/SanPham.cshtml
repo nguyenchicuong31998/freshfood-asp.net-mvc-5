@@ -1,0 +1,98 @@
+﻿@using WebsiteThucPhamSach.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<SANPHAM>
+@{
+    ViewBag.Title = "Sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/CssAdmin/CssSanPham.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<div class="tieude-sp">
+    @ViewBag.Title
+</div>
+<a id="btnAdd" href="#" class="btn btn-info">Thêm sản phẩm</a>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã sản phẩm</th>
+                <th>Tên</th>
+                <th>Ảnh</th>
+                <th>Xuất sứ</th>
+                <th>Mô tả</th>
+                <th>Giá</th>
+                <th>Giám giá</th>
+                <th>Mới</th>
+                <th>Mã danh mục</th>
+                <th>Lượt xem</th>
+                <th>Số lượng</th>
+                <th>Công cụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MASP</td>
+                    <td>@item.TENSP</td>
+                    <td>@item.ANHSP</td>
+                    <td>@item.XUATSU</td>
+                    <td>@item.MOTA</td>
+                    <td>@item.GIASP</td>
+                    <td>@item.GIAMGIA</td>
+                    <td>@item.SPMOI</td>
+                    <td>@item.MADM</td>
+                    <td>@item.LUOTXEM</td>
+                    <td>@item.SOLUONG</td>
+                    <td>
+                        <a href="#" data-id="@item.MASP" class="btnUpdate" data-toggle="tooltip" title="Sửa"><img src="~/Image/edit.png" alt="Update" /></a>
+                        <a href="#" data-id="@item.MASP" onclick="return ThongBao()" class="btnXoa" data-toggle="tooltip" title="Xóa"><img src="~/Image/delete.png" alt="Delete" /></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @*@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount *@
+    @Html.PagedListPager(Model, page => Url.Action("SanPham", new { page = page }))
+</div>
+<div id="PartialView">
+
+</div>
+@*@Html.Action("SanPhamPartial", "QLSanPham")*@
+
+<script type="text/javascript">
+    function ThongBao() {
+        if (confirm("Bạn chắc chắn muốn xóa sản phẩm này?")) {
+            return true;
+        }
+        else {
+            return res.status == false;
+        }
+    }
+    $(document).ready(function () {
+        $('.btnXoa').off('click').on('click', function () {
+            var MASP = $(this).data('id');
+            $.ajax({
+                data: { MASP: MASP },
+                url: '/Admin/QLSanPham/Xoa',
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/Admin/QLSanPham/SanPham";
+                        alert("Bạn đã xóa thành công");
+                    }
+                }
+            })
+        })
+        $('.btnUpdate').off('click').on('click', function () {
+            var MASP = $(this).data('id');
+            $('#PartialView').load("/Admin/QLSanPham/SuaPartial", { MASP: MASP});
+        })
+        $('#btnAdd').off('click').on('click', function () {
+            $('#PartialView').load("/Admin/QLSanPham/ThemPartial");
+        })
+    });
+</script>

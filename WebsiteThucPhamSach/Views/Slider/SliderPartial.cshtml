@@ -1,0 +1,51 @@
+﻿
+<link href="~/Content/CssClient/CssSlider.css" rel="stylesheet" />
+@{
+    string Slider_1 = Html.Action("GetQC", "Slider", new { ThuTuQC = 2}).ToString();
+    string Slider_2 = Html.Action("GetQC", "Slider", new { ThuTuQC = 3 }).ToString();
+    string Slider_3 = Html.Action("GetQC", "Slider", new { ThuTuQC = 4 }).ToString();
+    string Banner_1 = Html.Action("GetQC", "Slider", new { ThuTuQC = 5 }).ToString();
+    string Banner_2 = Html.Action("GetQC", "Slider", new { ThuTuQC = 6 }).ToString();
+    string Banner_3 = Html.Action("GetQC", "Slider", new { ThuTuQC = 7 }).ToString();
+}
+<slider class="background-slider">
+    <div class="container">
+        <div id="carousel-id" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-id" data-slide-to="0" class=""></li>
+                <li data-target="#carousel-id" data-slide-to="1" class=""></li>
+                <li data-target="#carousel-id" data-slide-to="2" class="active"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item">
+                    <img src="@Url.Content(Slider_1)" class="img-responsive custom-slider" alt="First sli">
+                </div>
+                <div class="item">
+                    <img src="@Url.Content(Slider_2)" class="img-responsive custom-slider" alt="Second slide">
+                </div>
+                <div class="item active">
+                    <img src="@Url.Content(Slider_3)" class="img-responsive custom-slider" alt="Third slider">
+                </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+    </div>
+</slider>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="wrap-banner">
+                <div class=".columns-wrap-banner">
+                    <img src="@Url.Content(Banner_1)" alt="" class="img-responsive">
+                </div>
+                <div class=".columns-wrap-banner">
+                    <img src="@Url.Content(Banner_2)" alt="" class="img-responsive">
+                </div>
+                <div class=".columns-wrap-banner">
+                    <img src="@Url.Content(Banner_3)" alt="" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

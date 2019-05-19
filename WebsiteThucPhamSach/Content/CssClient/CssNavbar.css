@@ -1,0 +1,142 @@
+﻿* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.custom-img {
+    width: 10px;
+    height: 50px;
+}
+
+.custom {
+    background-color: white;
+    border: none;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.custom-nav-bg {
+    font-size: 18px;
+}
+
+    .custom-nav-bg .parent {
+        color: white !important;
+        border: none;
+        border-radius: 5px !important;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        margin: 0px 5px;
+        background-color: #9bd031;
+    }
+
+        .custom-nav-bg .parent .child {
+            color: white !important;
+        }
+
+        .custom-nav-bg .parent:hover {
+            position: relative;
+            top: -5px;
+        }
+
+.btn-image {
+    background: url('../../Image/Search.png') no-repeat center;
+    background-color: white;
+}
+
+.nho {
+    display: inline-block;
+    width: 80% !important;
+    margin-top: 8px;
+}
+/*----- button 4 -----*/
+.custom-nav-bg .parent::before, .custom-nav-bg .parent::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    position: absolute;
+    transition: all 0.2s linear;
+    background: #fff;
+}
+
+.custom-nav-bg .parent:hover::before, .custom-nav-bg .parent:hover::after {
+    width: 100%;
+}
+
+.custom-nav-bg .parent::after {
+    right: 0;
+    bottom: 0;
+    transition-duration: 0.4s;
+}
+
+.custom-nav-bg .parent::after {
+    right: 0;
+    bottom: 0;
+    transition-duration: 0.4s;
+}
+
+.custom-nav-bg .parent::before {
+    left: 0;
+    top: 0;
+    transition-duration: 0.4s;
+}
+
+.custom-nav-bg .parent::before {
+    left: 0;
+    top: 0;
+    transition-duration: 0.4s;
+}
+/* Danh muc con trong */
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+    background-color: #9bd031 !important;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    margin-top: 10px;
+    padding: 0px;
+}
+
+.dropdown-menu ul {
+    list-style-type: none;
+}
+
+.dropdown-menu > li > a {
+    padding: 10px 14px 10px 10px;
+    color: black !important;
+    font-size: 14px;
+    font-family: sans-serif;
+}
+
+    .dropdown-menu > li > a:hover {
+        color: white !important;
+        background-color: #9bd031 !important;
+    }
+.tamgiac{
+    color:white !important;
+}
+
+.khung {
+    position: relative;
+}
+
+.kethua {
+    position: absolute;
+}
+@media only screen and (max-width: 768px) {
+    .dropdown-menu > li > a {
+        color: white !important;
+    }
+    .dropdown-menu > li > a:hover{
+        color: black !important;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px){
+    .navbar-right {
+        visibility:hidden;
+        width:100px;
+    }
+    .nho {
+        width: 70% !important;
+    }
+}

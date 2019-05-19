@@ -1,0 +1,113 @@
+﻿@using WebsiteThucPhamSach.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<QUANGCAO>
+@{
+    ViewBag.Title = "Quảng cáo";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    string value;
+}
+<link href="~/Content/CssAdmin/CssQuangCao.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<div class="tieude-sp">
+    @ViewBag.Title
+</div>
+<a id="btnAdd" href="#" class="btn btn-info">Thêm quảng cáo</a>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã quảng cáo</th>
+                <th>Tên</th>
+                <th>Ảnh</th>
+                <th>Đường dẫn</th>
+                <th>Thứ tự</th>
+                <th>Trạng thái</th>
+                <th>Công cụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var name = "";
+                if (item.TRANGTHAI == true)
+                {
+                    name = "Bật";
+                }
+                else
+                {
+                    name = "Tắt";
+                }
+                <tr>
+                    <td>@item.MAQC</td>
+                    <td>@item.TENQC</td>
+                    <td><img src="@Url.Content(item.ANHQC)" class="img-responsive custom-size" alt="Lỗi" /></td>    
+                    <td>@item.HREF</td>
+                    <td>@item.THUTUQC</td>
+                    <td>
+                        <input type="submit" class="trangthai btn btn-info" data-id="@item.MAQC" value="@name" />
+                    </td>
+                    <td>
+                        <a href="#" data-id="@item.MAQC" class="btnUpdate" data-toggle="tooltip" title="Sửa"><img src="~/Image/edit.png" alt="Update" /></a>
+                        <a href="#" data-id="@item.MAQC" onclick="return ThongBao()" class="btnXoa" data-toggle="tooltip" title="Xóa"><img src="~/Image/delete.png" alt="Delete" /></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @*@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount *@
+    @Html.PagedListPager(Model, page => Url.Action("QuangCao", new { page = page }))
+</div>
+<div id="PartialView">
+
+</div>
+<script type="text/javascript">
+    function ThongBao() {
+        if (confirm("Bạn chắc chắn muốn xóa sản phẩm này?")) {
+            return true;
+        }
+        else {
+            return res.status == false;
+        }
+    }
+    $(document).ready(function () {
+        $('.btnXoa').off('click').on('click', function () {
+            var MAQC = $(this).data('id');
+            $.ajax({
+                data: { MAQC: MAQC },
+                url: '/Admin/QLQuangCao/Xoa',
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/Admin/QLQuangCao/QuangCao";
+                        alert("Bạn đã xóa thành công");
+                    }
+                }
+            })
+        })
+        $('.btnUpdate').off('click').on('click', function () {
+            var MAQC = $(this).data('id');
+            $('#PartialView').load("/Admin/QLQuangCao/SuaQCPartial", { MAQC: MAQC});
+        })
+        $('#btnAdd').off('click').on('click', function () {
+            $('#PartialView').load("/Admin/QLQuangCao/ThemQCPartial");
+        })
+        var trangthai = $('.trangthai').val();
+        $('.trangthai').click(function () {
+            $.ajax({
+                url: "/Admin/QLQuangCao/Bat",
+                data: { MAQC: $(this).data('id') },
+                dataType: "Json",
+                type: "POST",
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/Admin/QLQuangCao/QuangCao";
+                    }
+                }
+            })
+        });
+    });
+</script>
+

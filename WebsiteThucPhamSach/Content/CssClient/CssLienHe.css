@@ -1,0 +1,16 @@
+﻿.title-wrap {
+    font-size: large !important;
+    font-family: monospace !important;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+    .title-wrap a {
+        text-decoration: none;
+        color: black;
+    }
+
+        .title-wrap a:hover {
+            text-decoration: none;
+            color: #9bd031;
+        }

@@ -1,0 +1,44 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html {
+    overflow-x: hidden !important;
+}
+
+.title {
+    font-family: "Gotham",sans-serif;
+    margin: 0;
+    font-size: 14px;
+    padding: 10px 5px 10px;
+    border-radius: 0;
+    line-height: 24px;
+    background-color: #fff;
+    border-bottom: solid 1px #ebebeb;
+}
+
+.gird-ChiTiet {
+    display: grid;
+}
+
+.columns-ChiTiet {
+    margin-left:15px;
+}
+
+.title-wrap {
+    font-size: large !important;
+    font-family: monospace !important;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+    .title-wrap a {
+        text-decoration: none;
+        color: black;
+    }
+
+        .title-wrap a:hover {
+            text-decoration: none;
+            color: #9bd031;
+        }

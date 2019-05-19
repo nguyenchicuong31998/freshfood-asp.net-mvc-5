@@ -1,0 +1,118 @@
+﻿@using WebsiteThucPhamSach.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<KHACHHANG>
+@{
+    ViewBag.Title = "Khách hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/CssAdmin/CssKhachHang.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<div class="tieude-sp">
+    @ViewBag.Title
+</div>
+<a id="btnAdd" href="#" class="btn btn-info">Thêm khách hàng</a>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã khách hàng</th>
+                <th>Tên</th>
+                <th>Điện thoại</th>
+                <th>Email</th>
+                <th>Mật khẩu</th>
+                <th>Giới tính</th>
+                <th>Ngày sinh</th>
+                <th>Địa chỉ</th>
+                <th>Trạng thái</th>
+                <th>Công cụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var name = "";
+                if (item.TRANGTHAI == true)
+                {
+                    name = "Bật";
+                }
+                else
+                {
+                    name = "Tắt";
+                }
+            <tr>
+                <td>@item.MAKH</td>
+                <td>@item.HOTEN</td>
+                <td>@item.DIENTHOAI</td>
+                <td>@item.EMAIL</td>
+                <td>@item.MATKHAU</td>
+                <td>@item.GIOITINH</td>
+                <td>@item.NGAYSINH.Value.ToString("dd/MM/yyyy")</td>
+                <td>@item.DIACHI</td>
+                <td>
+                    <input type="submit" class="trangthai btn btn-info" data-id="@item.MAKH" value="@name" />
+                </td>
+                <td>
+                    <a href="#" data-id="@item.MAKH" class="btnUpdate" data-toggle="tooltip" title="Sửa"><img src="~/Image/edit.png" alt="Update" /></a>
+                    <a href="#" data-id="@item.MAKH" onclick="return ThongBao()" class="btnXoa" data-toggle="tooltip" title="Xóa"><img src="~/Image/delete.png" alt="Delete" /></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    @Html.PagedListPager(Model, page => Url.Action("KhachHang", new { page = page }))
+</div>
+<div id="PartialView">
+
+</div>
+
+
+<script type="text/javascript">
+    function ThongBao() {
+        if (confirm("Bạn chắc chắn muốn xóa khách hàng này?")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    $(document).ready(function () {
+        $('.btnXoa').off('click').on('click', function () {
+            var MAKH = $(this).data('id');
+            $.ajax({
+                data: { MAKH: MAKH },
+                url: '/Admin/QLKhachHang/Xoa',
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/Admin/QLKhachHang/KhachHang";
+                        alert("Bạn đã xóa thành công");
+                    }
+                }
+            })
+        })
+        $('.btnUpdate').off('click').on('click', function () {
+            var MAKH = $(this).data('id');
+            $('#PartialView').load("/Admin/QLKhachHang/SuaKHPartial", { MAKH: MAKH });
+        })
+        $('#btnAdd').off('click').on('click', function () {
+            $('#PartialView').load("/Admin/QLKhachHang/ThemKHPartial");
+        })
+        var trangthai = $('.trangthai').val();
+        $('.trangthai').click(function () {
+            $.ajax({
+                url: "/Admin/QLKhachHang/Bat",
+                data: { MAKH: $(this).data('id') },
+                dataType: "Json",
+                type: "POST",
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/Admin/QLKhachHang/KhachHang";
+                    }
+                }
+            })
+        });
+    });
+</script>

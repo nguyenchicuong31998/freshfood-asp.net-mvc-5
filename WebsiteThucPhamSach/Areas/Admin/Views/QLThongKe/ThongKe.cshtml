@@ -1,0 +1,37 @@
+﻿@using WebsiteThucPhamSach.Models
+@model HOADON
+@{
+    ViewBag.Title = "Thống kê";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/CssAdmin/CssThongKe.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<div class="tieude-sp">
+    @ViewBag.Title
+</div>
+
+<p>
+    <span>Tháng</span> @Html.DropDownList("IdMonth", (IEnumerable<SelectListItem>)ViewBag.ItemMonth, new { @class = "idMonth  custom-frame" })
+    Năm @Html.DropDownList("IdYear", (IEnumerable<SelectListItem>)ViewBag.ItemYear, new { @class = "idYear  custom-frame" })
+</p>
+<div id="PartialView">
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var IdMonth = 5;
+        var IdYear = 2019;
+        $('.idMonth').change(function () {
+            IdMonth = $(this).val();
+           // alert(IdMonth);
+            $('#PartialView').load("/Admin/QLThongKe/DSThongKePartial", { IdMonth: IdMonth, IdYear: IdYear });
+        })
+        $('.idYear').change(function () {
+            IdYear = $(this).val();
+           // alert(IdYear);
+            $('#PartialView').load("/Admin/QLThongKe/DSThongKePartial", { IdMonth: IdMonth, IdYear: IdYear });
+        })
+        $('#PartialView').load("/Admin/QLThongKe/DSThongKePartial", { IdMonth: IdMonth, IdYear: IdYear });
+    });
+</script>

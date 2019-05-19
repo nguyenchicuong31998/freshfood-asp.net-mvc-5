@@ -1,0 +1,26 @@
+﻿@using WebsiteThucPhamSach.Models
+@model MENU
+
+
+<div class="col-lg-8 add-color">
+    @using (Html.BeginForm("SuaMenu", "QLMenu", FormMethod.Post))
+    {
+        <div class="frame-sp custom-col">
+            <h2>Sửa Menu</h2>
+            <div class="col-lg-6">
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.MAMN, new { @class = "textboxchung", @placeholder = "Mã khách hàng", disabled = "disabled" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.TENMN, new { @class = "textboxchung", @placeholder = "Tên menu" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.HREF, new { @class = "textboxchung", @placeholder = "Đường dẫn" })
+                </div>
+                <div class="layout">
+                    <input id="btnCapNhat" type="submit" class="btn btn-primary" value="Cập nhật" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<link href="~/Content/CssClient/CssTrangChu.css" rel="stylesheet" />
+
+@Html.Action("SliderPartial", "Slider")
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="title-home">
+                <div class="columns-title">
+                    <img src="~/Image/la.png" />
+                </div>
+                <div class="columns-title">
+                    <p class="title-p">Sản phẩm bán chạy</p>
+                </div>
+            </div>
+            @Html.Action("DanhMucPartial", "Home")
+        </div>
+    </div>
+</div>
+@Html.Action("ContentPartial", "Home")
+<div class="container">
+    <div class="row">
+        <div class="frame-commitment">
+            <div class="frame-collumn">
+                <img src="~/Image/camket1.jpg" alt="" class="img-responsive" />
+            </div>
+            <div class="frame-collumn">
+                <img src="~/Image/camket2.jpg" alt="" class="img-responsive" />
+            </div>
+            <div class="frame-collumn">
+                <img src="~/Image/camket3.jpg" alt="" class="img-responsive" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="title-home">
+                <div class="columns-title">
+                    <img src="~/Image/la.png" />
+                </div>
+                <div class="columns-title">
+                    <p class="title-p">Tin Tức Nổi Bật</p>
+                </div>
+            </div>
+            @Html.Action("TinTucPartial","Home")
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿.title {
+    font-family: "Gotham",sans-serif;
+    margin: 0;
+    font-size: 14px;
+    padding: 10px 0px 10px;
+    border-radius: 0;
+    line-height: 24px;
+    background-color: #fff;
+    border-bottom: solid 1px #ebebeb;
+}
+
+.gird-footer {
+    display: grid;
+    font-family: -webkit-pictograph;
+    font-size: 15px;
+}
+
+.row-footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.information-footer {
+    width: 360px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.child-column-footer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+/* Guid And Policy */
+.guid-policy-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 360px;
+    height: 300px;
+}
+
+.guid-policy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 190px;
+}
+
+.list-group-item {
+    border: none;
+    padding: 10px 0px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .guid-policy {
+        align-items: flex-start;
+        margin-left: 20px;
+    }
+}
+
+.search-footer {
+    width: 360px;
+    height: 230px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}

@@ -1,0 +1,43 @@
+﻿@using WebsiteThucPhamSach.Models
+@model ADMIN
+
+
+<div class="col-lg-8 add-color">
+    @using (Html.BeginForm("SuaAdmin", "QLAdmin", FormMethod.Post))
+    {
+        <div class="frame-sp custom-col">
+            <h2>Sửa Admin</h2>
+            <div class="col-lg-6">
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.MAAD, new { @class = "textboxchung", @placeholder = "Mã Admin", disabled = "disabled" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.TENAD, new { @class = "textboxchung", @placeholder = "Tên Admin" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.NGAYSINH, new { @class = "textboxchung", @placeholder = "Ngày sinh" })
+                </div>
+                <div class="layout-custom">
+                    <b>Giới tính:</b>
+                    @Html.RadioButtonFor(n => n.GIOITINH, "Nam") Nam
+                    &nbsp;&nbsp;@Html.RadioButtonFor(n => n.GIOITINH, "Nữ") Nữ
+                </div>
+                <div class="layout">
+                    @Html.TextAreaFor(n => n.DIACHI, new { @class = "textboxchung-custom", @placeholder = "Địa chỉ" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.EMAIL, new { @class = "textboxchung", @placeholder = "Email" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.MATKHAU, new { @class = "textboxchung", @placeholder = "Mật khẩu" })
+                </div>
+                <div class="layout">
+                    <input id="btnCapNhat" type="submit" class="btn btn-primary" value="Cập nhật" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+

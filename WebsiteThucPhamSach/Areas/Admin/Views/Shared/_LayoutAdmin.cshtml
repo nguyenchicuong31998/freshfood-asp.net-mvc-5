@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/CssAdmin/datepicker3.css" rel="stylesheet" />
+    <link href="~/Content/CssAdmin/stylesAdmin.css" rel="stylesheet" />
+</head>
+<body>
+    @Html.Action("HeaderADPartial","Admin")
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <ul class="nav menu">
+            <li class="active"><a href="~/Admin/Admin/TrangChu"><span class="glyphicon glyphicon-dashboard"></span>Trang Chủ</a></li>
+            <li class="parent ">
+                <a href="#sub-item-4" data-toggle="collapse">
+                    <span data-toggle="collapse" href="#sub-item-4" class="glyphicon glyphicon-shopping-cart"></span>QLĐơn đặt hàng<span data-toggle="collapse" href="#sub-item-4" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+                </a>
+                <ul class="children collapse" id="sub-item-4">
+                    <li>
+                        <a class="" href="~/Admin/QLHoaDon/HoaDon">
+                            <span class="glyphicon glyphicon-plus"></span> Hóa đơn
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="parent ">
+                <a href="#sub-item-1" data-toggle="collapse">
+                    <span data-toggle="collapse" href="#sub-item-1" class="glyphicon glyphicon-barcode"></span>QLSản phẩm<span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+                </a>
+                <ul class="children collapse" id="sub-item-1">
+                    <li>
+                        <a class="" href="~/Admin/QLSanPham/SanPham">
+                            <span class="glyphicon glyphicon-plus"></span> Sản Phẩm
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="parent ">
+                <a href="#sub-item-2" data-toggle="collapse">
+                    <span data-toggle="collapse" href="#sub-item-2" class="glyphicon glyphicon-user"></span>QLKhách hàng<span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+                </a>
+                <ul class="children collapse" id="sub-item-2">
+                    <li>
+                        <a class="" href="~/Admin/QLKhachHang/KhachHang">
+                            <span class="glyphicon glyphicon-plus"></span> Khách Hàng
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="parent">
+                <a href="#sub-item-3" data-toggle="collapse">
+                    <span data-toggle="collapse" href="#sub-item-3" class="glyphicon glyphicon-lock"></span>Menu, Danh mục<span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+                </a>
+                <ul class="children collapse" id="sub-item-3">
+                    <li>
+                        <a href="~/Admin/QLMenu/Menu"><i class="glyphicon glyphicon-plus"></i> Menu</a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/QLDanhMuc/DanhMuc"><i class="glyphicon glyphicon-plus"></i> Danh Mục</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="~/Admin/QLQuangCao/QuangCao"><span class="glyphicon glyphicon-certificate"></span>Quảng cáo</a></li>
+            <li><a href="~/Admin/QLTinTuc/TinTuc"><span class="glyphicon glyphicon glyphicon-bookmark"></span>Tin tức</a></li>
+            <li><a href="~/Admin/QLThongKe/ThongKe"><span class="glyphicon glyphicon-file"></span>Thống kê</a></li>
+            <li><a href="~/Admin/QLAdmin/Admin"><span class="glyphicon glyphicon-unchecked"></span>Admin</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-comment"></span>Bình luận</a></li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="~/Admin/Admin/DangXuat"><span class="glyphicon glyphicon-off"></span>Đăng xuất</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/ckeditor")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

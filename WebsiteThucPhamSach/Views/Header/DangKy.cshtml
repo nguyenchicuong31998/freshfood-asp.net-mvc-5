@@ -1,0 +1,57 @@
+﻿@using WebsiteThucPhamSach.Models;
+@model KHACHHANG
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<link href="~/Content/CssClient/CssDangKy.css" rel="stylesheet" />
+@using (Html.BeginForm("DangKy","Header",FormMethod.Post))
+{
+    <div class="container gird-login">
+        <div class="row">
+            <div class="container">
+                <div class="container">
+                    <div class="col-lg-12 title">
+                        <p class="title-wrap"><a href="~/Trang-Chu">Trang chủ</a> > <span>Đăng ký tài khoản</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 columns-login">
+                <h2 class="title-login">Đăng ký tài khoản</h2>
+                <div class="input-row">
+                    @Html.TextBoxFor(n => n.HOTEN, new { @class = "input-share", @Placeholder = "Họ & tên" })
+                    @Html.ValidationMessageFor(n => n.HOTEN, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-row">
+                    @Html.TextBoxFor(n => n.DIENTHOAI, new { @class = "input-share", @Placeholder = "Số điện thoại" })
+                    @Html.ValidationMessageFor(n => n.DIENTHOAI, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-row">
+                    @Html.TextBoxFor(n => n.EMAIL, new { @class = "input-share", @Placeholder = "Email" })
+                    @Html.ValidationMessageFor(n => n.EMAIL, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-row">
+                    @Html.PasswordFor(n => n.MATKHAU, new { @class = "input-share", @Placeholder = "Mật khẩu" })
+                    @Html.ValidationMessageFor(n => n.MATKHAU, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-row">
+                    <span style="font-size:15px;padding-left:22px;">Giới tính</span>
+                    &nbsp; &nbsp; &nbsp;
+                    @Html.RadioButtonFor(n => n.GIOITINH, 1, htmlAttributes: new { @checked = true }) Nam
+                    &nbsp;
+                    @Html.RadioButtonFor(n => n.GIOITINH, 0) Nữ
+                </div>
+                <div class="input-row">
+                    @Html.TextBoxFor(n => n.NGAYSINH, new { @class = "input-share", @Placeholder = "Ngày sinh" })
+                    @Html.ValidationMessageFor(n => n.NGAYSINH, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-row">
+                    <input class="btn btn-block custom-dangky" type="submit" name="dangnhap" value="Đăng ký">
+                </div>
+                <div class="input-row">
+                    <p class="custom-space">Đã có tài khoản đăng nhập <a href="~/Dang-Nhap">tại đây</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+}

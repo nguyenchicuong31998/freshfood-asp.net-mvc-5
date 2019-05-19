@@ -1,0 +1,49 @@
+﻿@using WebsiteThucPhamSach.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<TINTUC>
+@{
+    ViewBag.Title = "Tin tức";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+@Styles.Render("~/TinTuc/css")
+<link href="~/Content/CssClient/CssSanPham.css" rel="stylesheet" />
+<div class="container">
+    <div class="container">
+        <div class="col-lg-12 title">
+            <p class="title-wrap"><a href="~/Trang-Chu">Trang chủ</a> > <span>@ViewBag.Title</span></p>
+        </div>
+    </div>
+    <div class="col-lg-12">
+
+        <div class="col-lg-3 col-md-4 col-sm-4">
+            <div class="title-left">Danh mục</div>
+            <div class="left">
+                <ul class="danhmuc">
+                    @foreach (var danhmuc in ViewBag.DanhMuc)
+                    {
+                        <li class="danhmuc-item">
+                            <a href="~/San-Pham?MADM=@danhmuc.MADM" class="danhmuc-item-a">
+                                @danhmuc.TENDM
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top:28px" class="col-lg-9 col-md-8 col-sm-8">
+            @foreach (var item in Model)
+            {
+                <div class="news-frame">
+                    <a href="~/Chi-Tiet-Tin-Tuc?MATT=@item.MATT"><img class="img-responsive img-thumbnail custom-img-news" src="@Url.Content("~/Image/" + item.ANH + " ")" alt="ảnh tin tức" /></a>
+                    <div class="content-news">
+                        <a href="~/Chi-Tiet-Tin-Tuc?MATT=@item.MATT" class="title-news">@item.TIEUDE</a>
+                        <p class="datetime-news">@item.NGAYDANG.Value.ToString("dd/MM/yyyy")</p>
+                        <p class="content-describe">@item.MOTA</p>
+                    </div>
+                </div>
+            }
+            @Html.PagedListPager(Model, page => Url.Action("TinTuc", new { page = page }))
+        </div>
+    </div>
+</div>
+

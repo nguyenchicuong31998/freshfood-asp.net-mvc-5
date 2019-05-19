@@ -1,0 +1,22 @@
+﻿@using WebsiteThucPhamSach.Models
+@model TINTUC
+@{
+    ViewBag.Title = "Chi tiết tin tức";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<link href="~/Content/CssClient/CssChiTietTinTuc.css" rel="stylesheet" />
+<div class="container gird-ChiTiet">
+    <div class="row">
+        <div class="container">
+            <div class="container">
+                <div class="col-lg-12 title">
+                    <p class="title-wrap"><a href="~/Trang-Chu">Trang chủ</a> > <span>Tin Tức</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 columns-ChiTiet">
+            <p class="title-CT">@Model.TIEUDE</p>
+            @Html.Raw(Model.NOIDUNG)
+        </div>
+    </div>
+</div>

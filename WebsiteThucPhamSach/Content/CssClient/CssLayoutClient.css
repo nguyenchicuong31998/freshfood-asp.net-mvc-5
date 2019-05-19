@@ -1,0 +1,250 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+}
+html {
+    overflow-x: hidden !important;
+}
+.background-header {
+    background-image: url('../../Image/background_header.png');
+    background-position: top left;
+    background-size: cover;
+    width: 100%;
+    background-repeat: no-repeat;
+    height: 220px;
+    padding: 10px;
+    display: grid;
+
+}
+
+.columns {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact {
+    display: flex;
+    padding: 10px;
+}
+
+.icon_c {
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    font-size: 25px;
+    border: 1px solid gray;
+    line-height: 55px;
+    border-radius: 45px;
+}
+
+    .icon_c:hover {
+        background: #9bd031;
+    }
+
+    .icon_c .fa {
+        width: 55px;
+        height: 30px;
+    }
+
+        .icon_c .fa:hover {
+            color: white;
+        }
+
+.content {
+    padding-left: 10px;
+}
+
+    .content .bold_c {
+        font-weight: bold;
+        font-family: sans-serif;
+    }
+
+.phone {
+    color: black;
+}
+/*Addresss*/
+.address {
+    display: flex;
+    padding: 10px;
+}
+
+.icon_a {
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid gray;
+    line-height: 55px;
+    border-radius: 45px;
+}
+
+    .icon_a:hover {
+        background: #9bd031;
+    }
+
+    .icon_a .fa {
+        width: 55px;
+        height: 30px;
+    }
+
+        .icon_a .fa:hover {
+            color: white;
+        }
+
+.content {
+    padding-left: 10px;
+}
+
+    .content .bold_a {
+        font-weight: bold;
+        font-family: sans-serif;
+    }
+
+.address_a {
+    color: black;
+}
+/*Tool*/
+.tool {
+    display: flex;
+    padding: 10px;
+    position: relative;
+}
+
+.icon_user {
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid gray;
+    line-height: 55px;
+    border-radius: 45px;
+    margin-right: 10px;
+    background: #fff;
+}
+
+    .icon_user:hover {
+        background: #9bd031;
+    }
+
+.icon_cart {
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid gray;
+    line-height: 55px;
+    border-radius: 45px;
+    margin-right: 10px;
+    background: #fff;
+}
+
+    .icon_cart a {
+        color: black;
+    }
+
+    .icon_cart:hover {
+        background: #9bd031;
+    }
+
+.login {
+    opacity: 0;
+    list-style-type: none;
+    position: absolute;
+    top: 75px;
+    right: 88px;
+    z-index:9999;
+    font-family: sans-serif;
+    width: 111px;
+}
+
+    .login:after {
+        content: "";
+        position: absolute;
+        top: -20px;
+        width: 20px;
+        height: 20px;
+        border: 11px #ffd70000 solid;
+        border-bottom-color: white;
+        right: 7px;
+    }
+
+    .login li {
+        height: auto;
+        background: #fff;
+        padding: 5px;
+        border: 1px solid #ebebeb;
+        text-align: center;
+    }
+
+        .login li a {
+            color: black;
+            padding: 5px;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+            .login li a:hover {
+                color: #9bd031;
+                text-decoration: none;
+            }
+
+.hienthi {
+    opacity: 1 !important;
+}
+/*Khung đã đăng nhập*/
+.mid-share {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.caret {
+    color: #9bd031 !important;
+    border-top: 6px dashed !important;
+    border-right: 6px solid transparent !important;
+    border-left: 6px solid transparent !important;
+}
+
+.information_login {
+    opacity: 0;
+    list-style-type: none;
+    position: absolute;
+    top: 59px;
+    z-index: 9999;
+    right: 67px;
+    font-family: sans-serif;
+    width: 140px;
+}
+
+    .information_login:after {
+        content: "";
+        position: absolute;
+        top: -20px;
+        width: 20px;
+        height: 20px;
+        border: 11px #ffd70000 solid;
+        border-bottom-color: white;
+        right: 7px;
+    }
+
+    .information_login li {
+        height: auto;
+        background: #fff;
+        padding: 5px;
+        border: 1px solid #ebebeb;
+        text-align: center;
+    }
+
+        .information_login li a {
+            color: black;
+            padding: 5px;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+            .information_login li a:hover {
+                color: #9bd031;
+                text-decoration: none;
+            }

@@ -1,0 +1,28 @@
+﻿@using WebsiteThucPhamSach.Models
+@model DANHMUC
+
+
+<div class="col-lg-8 add-color">
+    @using (Html.BeginForm("SuaDanhMuc", "QLDanhMuc", FormMethod.Post))
+    {
+        <div class="frame-sp custom-col">
+            <h2>Sửa danh mục</h2>
+            <div class="col-lg-6">
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.MADM, new { @class = "textboxchung", @placeholder = "Mã danh mục", disabled = "disabled" })
+                </div>
+                <div class="layout">
+                    @Html.TextBoxFor(n => n.TENDM, new { @class = "textboxchung", @placeholder = "Tên danh mục" })
+                </div>
+                <div class="layout">
+                    @Html.DropDownList("MAMN", (IEnumerable<SelectListItem>)ViewBag.Menu, new { @class = "form-control" })
+                    @*@Html.TextBoxFor(n => n.MAMN, new { @class = "textboxchung", @placeholder = "Mã menu" })*@
+                </div>
+                <div class="layout">
+                    <input id="btnCapNhat" type="submit" class="btn btn-primary" value="Cập nhật" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

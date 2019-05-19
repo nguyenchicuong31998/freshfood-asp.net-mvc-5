@@ -1,0 +1,41 @@
+﻿@using WebsiteThucPhamSach.Models
+@model ADMIN
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng nhập</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default" style="margin-top:20%;">
+                <div class="panel-heading">Đăng Nhập</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.EMAIL, new { @class = "form-control", @placeholder = "Tên đăng nhập" })
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.MATKHAU, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary" id="btn" type="submit">Đăng nhập</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div><!-- /.col-->
+    </div><!-- /.row -->
+</body>
+</html>

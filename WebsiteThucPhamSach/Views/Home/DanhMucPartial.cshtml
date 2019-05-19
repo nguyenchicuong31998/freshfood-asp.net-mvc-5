@@ -1,0 +1,16 @@
+﻿@using WebsiteThucPhamSach.Models;
+@model List<DANHMUC>
+
+<link href="~/Content/CssClient/CssDanhMuc.css" rel="stylesheet" />
+<ul class="choose-category">
+    @foreach (var item in Model)
+    {
+
+        <li class="category">
+            <a href="~/Trang-Chu?MADM=@item.MADM" class="category-item">
+                @item.TENDM
+            </a>
+        </li>
+    }
+</ul>
+

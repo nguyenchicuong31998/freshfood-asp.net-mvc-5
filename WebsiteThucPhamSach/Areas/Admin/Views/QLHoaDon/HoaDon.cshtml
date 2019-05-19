@@ -1,0 +1,121 @@
+﻿@using WebsiteThucPhamSach.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<HOADON>
+@{
+    ViewBag.Title = "Hóa đơn";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/CssAdmin/CssHoaDon.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<div class="tieude-sp">
+    @ViewBag.Title
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã hóa đơn</th>
+                <th>Mã khách hàng</th>
+                <th>Tên khách hàng</th>
+                <th>Điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Đơn giá</th>
+                <th>Ngày đặt</th>
+                <th>Ngày giao</th>
+                <th>Hình thức thanh toán</th>
+                <th>Hình thức giao hàng</th>
+                <th>Trạng thái</th>
+                <th>Xem chi tiết hàng</th>
+                <th>Hủy đơn hàng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var name = "";
+                if (item.TRANGTHAI == true)
+                {
+                    name = "Đã xác nhận";
+                }
+                else
+                {
+                    name = "Xác nhận";
+                }
+            <tr>
+                <td>@item.MAHD</td>
+                <td>@item.MAKH</td>
+                <td>@item.TENKH</td>
+                <td>@item.DIENTHOAI</td>
+                <td>@item.DIACHI</td>
+                <td>@item.DONGIA</td>
+                <td>@item.NGAYDAT.Value.ToString("dd/MM/yyyy")</td>
+                <td>@item.NGAYGIAO.Value.ToString("dd/MM/yyyy")</td>
+                <td>@item.HTTHANHTOAN</td>
+                <td>@item.HTGIAOHANG</td>
+                <td>
+                    <input type="submit" class="trangthai btn btn-info" data-id="@item.MAHD" value="@name" />
+                </td>
+                <td>
+                    <a href="#" data-id="@item.MAHD" class="btnXemCT btn btn-info" data-toggle="tooltip" title="Xem">Xem</a>              
+                </td>
+                <td>
+                    <a href="#" data-id="@item.MAHD" onclick="return ThongBao()" class="btnHuy btn btn-info" data-toggle="tooltip" title="Hủy">Hủy</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    @*@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount *@
+    @Html.PagedListPager(Model, page => Url.Action("HoaDon", new { page = page }))
+</div>
+<div id="PartialView">
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.btnHuy').off('click').on('click', function () {
+            var MAHD = $(this).data('id');
+            $.ajax({
+                data: { MAHD: MAHD },
+                url: '/Admin/QLHoaDon/Huy',
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/Admin/QLHoaDon/HoaDon";
+                        alert("Bạn đã hủy thành công");
+                    }
+                }
+            })
+        })
+        $('.btnXemCT').off('click').on('click', function () {
+            var MAHD = $(this).data('id');
+            $('#PartialView').load("/Admin/QLHoaDon/CTHoaDonPartial", { MAHD: MAHD });
+        })
+        var trangthai = $('.trangthai').val();
+        $('.trangthai').click(function () {
+            $.ajax({
+                url: "/Admin/QLHoaDon/Bat",
+                data: { MAHD: $(this).data('id') },
+                dataType: "Json",
+                type: "POST",
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/Admin/QLHoaDon/HoaDon";
+                    }
+                }
+            })
+        });
+    });
+    function ThongBao() {
+        if (confirm("Bạn chắc chắn muốn hủy đơn hàng này?")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+</script>
+

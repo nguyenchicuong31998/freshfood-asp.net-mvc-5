@@ -1,0 +1,50 @@
+﻿@using WebsiteThucPhamSach.Models;
+@model List<SANPHAM>
+@{
+    ViewBag.Title = "Tiềm kiếm";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<link href="~/Content/CssClient/CssTrangChu.css" rel="stylesheet" />
+<h2 class="text-center custom-search">Tìm kiếm</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-content">
+                @foreach (var item in Model)
+                {
+                    if (item.GIASP != null && item.GIAMGIA == null)
+                    {
+                        <div class="frame">
+                            <div class="picture">
+                                @if (item.SPMOI == 1)
+                                {
+                                    <span class="new">Mới</span>
+                                }
+                                <a href="#"><img src="@Url.Content("~/Image/"+item.ANHSP+"")" class="img-size img-responsive text-center img-thumbnail" alt=""></a>
+                                <div class="xem"><a class="img-a" href="~/Home/ChiTietHoa?MAHOA=@item.MASP" alt="Thêm giỏ hàng" data-toggle="tooltip" title="thêm giỏ hàng"></a></div>
+                                <div class="content-row">
+                                    <a href=""><p class="title-content">@item.TENSP</p></a>
+                                    <p style="font-size: 15px;" class="title-content"><strong class="color-p">@Html.Action("FormatPrice", "Home", new { _strInput = item.GIASP }) đ/KG</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="frame">
+                            <div class="picture">
+                                <span class="sale">Giảm giá</span>
+                                <a href="#"><img src="@Url.Content("~/Image/"+item.ANHSP+"")" class="img-size img-responsive text-center img-thumbnail" alt=""></a>
+                                <div class="xem"><a class="img-a" href="~/Home/ChiTietHoa?MAHOA=@item.MASP" alt="Thêm giỏ hàng" data-toggle="tooltip" title="thêm giỏ hàng"></a></div>
+                                <div class="content-row">
+                                    <a href=""><p class="title-content">@item.TENSP</p></a>
+                                    <p style="font-size: 15px;" class="title-content"><strong class="color-p">@Html.Action("FormatPrice", "Home", new { _strInput = item.GIASP }) đ/KG</strong> &nbsp &nbsp<del>@Html.Action("FormatPrice", "Home", new { _strInput = item.GIAMGIA }) đ/KG</del></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

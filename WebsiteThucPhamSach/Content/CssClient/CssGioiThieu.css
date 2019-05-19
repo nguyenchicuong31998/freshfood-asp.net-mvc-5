@@ -1,0 +1,37 @@
+﻿.title-wrap {
+    font-size: large !important;
+    font-family: monospace !important;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+    .title-wrap a {
+        text-decoration: none;
+        color: black;
+    }
+
+        .title-wrap a:hover {
+            text-decoration: none;
+            color: #9bd031;
+        }
+
+.title-gt {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0px;
+    text-align:center;
+}
+
+.phan-gt {
+    font-size: 17px;
+    font-weight: bold;
+    margin: 20px 0px;
+}
+
+.noidung-gt {
+    font-size: 16px;
+    text-align: justify;
+}
+.custom-row{
+    padding-left:20px !important;
+}

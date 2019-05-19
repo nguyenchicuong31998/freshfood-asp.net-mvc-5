@@ -1,0 +1,122 @@
+﻿@using WebsiteThucPhamSach.Models;
+@model List<SANPHAM>
+@{
+    ViewBag.Title = "Sản phẩm";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<link href="~/Content/CssClient/CssSanPham.css" rel="stylesheet" />
+<div class="container margin-sanpham">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-3 col-md-4 col-sm-4">
+                <div class="title-left">Danh mục</div>
+                <div class="left">
+                    <ul class="danhmuc">
+                        @foreach (var danhmuc in ViewBag.DanhMuc)
+                        {
+                            <li class="danhmuc-item">
+                                <a href="~/San-Pham?MADM=@danhmuc.MADM" class="danhmuc-item-a">
+                                    @danhmuc.TENDM
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="title-left">Lọc theo giá</div>
+                <div class="left">
+                    <ul class="danhmuc">
+                        <li class="danhmuc-item">
+                            <input  type="checkbox"  name="1"> Dưới 100.000
+                        </li>
+                        <li class="danhmuc-item">
+                            <input  type="checkbox"  name="2"> Từ 100.000 - 200.000
+                        </li>
+                        <li class="danhmuc-item">
+                            <input  type="checkbox"  name="3"> Từ 200.000 - 300.000
+                        </li>
+                        <li class="danhmuc-item">
+                            <input type="checkbox"  name="4"> Từ 300.000 - 400.000
+                        </li>
+                        <li class="danhmuc-item">
+                            <input type="checkbox"  name="5"> Trên 500.000
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-8 col-sm-8">
+                <div class="title-right">@ViewBag.TENDM</div>
+                <div class="table-content">
+                    @foreach (var item in Model)
+                    {
+                        if (item.GIASP != null && item.GIAMGIA == 0)
+                        {
+                            <div class="frame">
+                                <div class="picture">
+                                    @if (item.SPMOI == 1)
+                                    {
+                                        <span class="new">Mới</span>
+                                    }
+                                    <a href="~/Chi-Tiet?MASP=@item.MASP"><img src="@Url.Content("~/Image/"+item.ANHSP+"")" class="img-size img-responsive text-center img-thumbnail" alt=""></a>
+                                    <div class="xem"><a class="img-a giohang" data-id="@item.MASP" alt="Thêm giỏ hàng" data-toggle="tooltip" title="thêm giỏ hàng"></a></div>
+                                    <div class="content-row">
+                                        <a href="~/Chi-Tiet?MASP=@item.MASP"><p class="title-content">@item.TENSP</p></a>
+                                        <p style="font-size: 15px;" class="title-content fix"><strong class="color-p">@Html.Action("FormatPrice", "Home", new { _strInput = item.GIASP }) đ/KG</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="frame">
+                                <div class="picture">
+                                    <span class="sale">Giảm giá</span>
+                                    <a href="~/Chi-Tiet?MASP=@item.MASP"><img src="@Url.Content("~/Image/"+item.ANHSP+"")" class="img-size img-responsive text-center img-thumbnail" alt=""></a>
+                                    <div class="xem"><a class="img-a giohang" data-id="@item.MASP" alt="Thêm giỏ hàng" data-toggle="tooltip" title="thêm giỏ hàng"></a></div>
+                                    <div class="content-row">
+                                        <a href="~/Chi-Tiet?MASP=@item.MASP"><p class="title-content">@item.TENSP</p></a>
+                                        <p style="font-size:15px;" class="title-content fix"><strong class="color-p">@Html.Action("FormatPrice", "Home", new { _strInput = item.GIASP }) đ/KG</strong> &nbsp &nbsp<del>@Html.Action("FormatPrice", "Home", new { _strInput = item.GIAMGIA }) đ/KG</del></p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.giohang').off('click').on('click', function () {
+            var MASP = $(this).data('id');
+            $.ajax({
+                data: { MASP: MASP },
+                url: '/Home/AddGioHang',
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/Home/TrangChu";
+                    }
+                }
+            })
+        });
+        //$('.checkbox').off('click').on('click', function () {
+        //    var LocGia = $(this).data('ckb');
+        //    var MASP = MASP;
+        //    $.ajax({
+        //        data: { MASP: MASP ,LocGia: LocGia },
+        //        url: '/Home/SanPham',
+        //        dataType:'json',
+        //        type: 'POST',
+        //        success: function (res) {
+        //            if (res.status == true) {
+        //                window.location.href = "/Home/SanPham";
+        //            }
+        //        }
+        //    })
+        //    alert(LocGia);
+        //})
+    });
+</script>

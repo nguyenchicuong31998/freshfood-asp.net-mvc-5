@@ -1,0 +1,95 @@
+﻿@using WebsiteThucPhamSach.Models;
+@model List<GioHang>
+
+<link href="~/Content/CssClient/CssLayoutClient.css" rel="stylesheet" />
+@{
+    string Logo = Html.Action("GetQC", "Header", new { ThuTuQC = 1 }).ToString();
+}
+<div class="container-fluid background-header">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 columns">
+                            <a href="~/Trang-Chu" class="logo-top">
+                                <img src="@Url.Content(Logo)" alt="logo">
+                            </a>
+                        </div>
+                        <div class="col-lg-3 columns">
+                            <div class="contact">
+                                <div class="icon_c">
+                                    <i class="fa fa-mobile-phone"></i>
+                                </div>
+                                <div class="content">
+                                    <p class="bold_c">HỖ TRỢ GỌI NGAY</p>
+                                    <span>
+                                        <a href="#" class="phone">0972612445</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 columns hidden-sm hidden-xs hidden-md">
+                            <div class="address">
+                                <div class="icon_a">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <div class="content">
+                                    <p class="bold_a">ĐỊA CHỈ CỬA HÀNG</p>
+                                    <span>
+                                        107/A Đoàn Thị Liên, Phú Lợi,TP.Thủ Dầu Một
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 columns">
+                            <div class="tool">
+                                @if (Session["MAKH"] == null)
+                                {
+                                    <span class="icon_user">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <ul class="login list-group">
+                                        <li class="list-group-item">
+                                            <a href="~/Dang-Nhap">Đăng nhập</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="~/Dang-Ky">Đăng ký</a>
+                                        </li>
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <p class="mid-share">
+                                        <strong>@Session["HoTen"].ToString()</strong>
+                                        <span class="caret">
+                                        </span>
+                                    </p>
+                                    <ul class="information_login list-group">
+                                        <li><a href="~/Thong-Tin-Ca-Nhan">Thông tin cá nhân</a></li>
+                                        <li><a href="~/Dang-Xuat">Đăng xuất</a></li>
+                                    </ul>
+                                }
+                                <span class="icon_cart">
+                                    <a href="~/Gio-Hang">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>
+                                            @{
+                                                int so = 0;
+                                                foreach (var item in Model)
+                                                {
+                                                    so += int.Parse(item.SoLuong.ToString());
+                                                }
+                                            }
+                                        </span>
+                                        @Html.ActionLink(so.ToString(), "GioHang", "Home")
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

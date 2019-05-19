@@ -1,0 +1,44 @@
+﻿@using WebsiteThucPhamSach.Models;
+@model SANPHAM
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<link href="~/Content/CssClient/CssChiTietSP.css" rel="stylesheet" />
+<div class="container">
+    <div class="container">
+        <div class="col-lg-12 title">
+            <p class="title-wrap"><a href="~/Trang-Chu">Trang chủ</a> > <span>@Model.TENSP</span></p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="chitietsanpham">
+                <img src="@Url.Content("~/Image/"+Model.ANHSP)" class="img-responsive picture1 img-thumbnail" alt="Ảnh sản phẩm" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="ten dungchung">@Model.TENSP</div>
+            <div class="soluotxem dungchung">Lượt xem: @Model.LUOTXEM</div>
+            <div class="trangthai dungchung">Trạng thái:<span class="conhang">@Html.Action("TrangThai", "Home", new { sl = @Model.SOLUONG })</span></div>
+            <div class="tien dungchung">@Html.Action("FormatPrice", "Home", new { _strInput = Model.GIASP })</div>
+            <hr class="ngang dungchung">
+            <div class="mota dungchung">Mô tả:@Html.Raw(Model.MOTA)</div>
+            <hr class="ngang dungchung">
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        </div>
+        @using (Html.BeginForm("AddItem", "Home", FormMethod.Post))
+        {
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="soluong dungchung">Số lượng:</div>
+                <div class="dungchung">
+                    <input id="soluong" name="soluong" class="nhapsoluong" type="number" value="1" min="1" max="50" />
+                    <input type="submit" class="btn btn-danger themvaogiohang" value="Cho vào giỏ hàng" id="submitgh" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,108 @@
+﻿@using WebsiteThucPhamSach.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<DANHMUC>
+@{
+    ViewBag.Title = "Danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/CssAdmin/CssDanhMuc.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<div class="tieude-sp">
+    @ViewBag.Title
+</div>
+<a id="btnAdd" href="#" class="btn btn-info">Thêm danh mục</a>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã danh mục</th>
+                <th>Tên</th>
+                <th>Mã menu</th>
+                <th>Trạng thái</th>
+                <th>Công cụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var name = "";
+                if (item.TRANGTHAI == true)
+                {
+                    name = "Bật";
+                }
+                else
+                {
+                    name = "Tắt";
+                }
+            <tr>
+                <td>@item.MADM</td>
+                <td>@item.TENDM</td>
+                <td>@item.MAMN</td>
+                <td>
+                    <input type="submit" class="trangthai btn btn-info" data-id="@item.MADM" value="@name" />
+                </td>
+                <td>
+                    <a href="#" data-id="@item.MADM" class="btnUpdate" data-toggle="tooltip" title="Sửa"><img src="~/Image/edit.png" alt="Update" /></a>
+                    <a href="#" data-id="@item.MADM" onclick="return ThongBao()" class="btnXoa" data-toggle="tooltip" title="Xóa"><img src="~/Image/delete.png" alt="Delete" /></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    @*@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount *@
+    @Html.PagedListPager(Model, page => Url.Action("DanhMuc", new { page = page }))
+</div>
+<div id="PartialView">
+
+</div>
+<script type="text/javascript">
+    function ThongBao() {
+        if (confirm("Bạn chắc chắn muốn xóa sản phẩm này?")) {
+            return true;
+        }
+        else {
+            return res.status == false;
+        }
+    }
+    $(document).ready(function () {
+        $('.btnXoa').off('click').on('click', function () {
+            var MADM = $(this).data('id');
+            $.ajax({
+                data: { MADM: MADM },
+                url: '/Admin/QLDanhMuc/Xoa',
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/Admin/QLDanhMuc/DanhMuc";
+                        alert("Bạn đã xóa thành công");
+                    }
+                }
+            })
+        })
+        $('.btnUpdate').off('click').on('click', function () {
+            var MADM = $(this).data('id');
+            $('#PartialView').load("/Admin/QLDanhMuc/SuaDMPartial", { MADM: MADM});
+        })
+        $('#btnAdd').off('click').on('click', function () {
+            $('#PartialView').load("/Admin/QLDanhMuc/ThemDMPartial");
+        })
+        var trangthai = $('.trangthai').val();
+        $('.trangthai').click(function () {
+            $.ajax({
+                url: "/Admin/QLDanhMuc/Bat",
+                data: { MADM: $(this).data('id') },
+                dataType: "Json",
+                type: "POST",
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/Admin/QLDanhMuc/DanhMuc";
+                    }
+                }
+            })
+        });
+    });
+</script>
+
