@@ -16,7 +16,7 @@ namespace WebsiteThucPhamSach.Areas.Admin.Controllers
         {
             int pageSize = 10;
             int pageNumber = (page ?? 1);
-            var HoaDon = db.HOADONs.ToList().OrderBy(n => n.TRANGTHAI==false).ToPagedList(pageNumber, pageSize);
+            var HoaDon = db.HOADONs.ToList().OrderByDescending(n => n.NGAYDAT).ToPagedList(pageNumber, pageSize);
             return View(HoaDon);
         }
         // Huy hóa đơn

@@ -172,6 +172,7 @@
     <Compile Include="Models\HOADON.cs">
       <DependentUpon>QLThucPham.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HThucGiaoHang.cs" />
     <Compile Include="Models\KHACHHANG.cs">
       <DependentUpon>QLThucPham.tt</DependentUpon>
     </Compile>
@@ -199,11 +200,18 @@
     <Compile Include="Models\SANPHAM.cs">
       <DependentUpon>QLThucPham.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SearchItem.cs" />
+    <Compile Include="Models\HTThanhToanIteam.cs" />
     <Compile Include="Models\TINTUC.cs">
       <DependentUpon>QLThucPham.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\CssAdmin\CssAdmin.css" />
@@ -295,6 +303,7 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Index.aspx" />
     <EntityDeploy Include="Models\QLThucPham.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>QLThucPham.Designer.cs</LastGenOutput>
@@ -722,6 +731,7 @@
     <Content Include="Views\Home\ChiTietTinTucPartial.cshtml" />
     <Content Include="Views\Header\ThongTinCaNhan.cshtml" />
     <Content Include="Views\Home\ThanhToan.cshtml" />
+    <Content Include="Views\Home\ThanhToanPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,13 +5,14 @@ using System.Web;
 
 namespace WebsiteThucPhamSach.Models
 {
-    public class SearchItem
+    [Serializable]
+    public class HTThanhToanIteam
     {
        
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public SearchItem(int iD,string name) {
+        public HTThanhToanIteam(int iD,string name) {
             this.Id = iD;
             this.Name = name;
         }

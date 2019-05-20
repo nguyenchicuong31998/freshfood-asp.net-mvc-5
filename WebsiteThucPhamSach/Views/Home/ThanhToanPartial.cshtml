@@ -1,0 +1,36 @@
+﻿@using WebsiteThucPhamSach.Models;
+@model KHACHHANG
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            @using (Html.BeginForm("ThanhToan", "Home", FormMethod.Post))
+            {
+                <div class="title-chung">Thông tin mua hàng</div>
+                <div class="congcu">
+                    <div class="chung-thanhtoan">
+                        @Html.TextBoxFor(n => n.HOTEN, new { @class = "textboxchung", @placeholder = "Họ và tên" })
+                    </div>
+                    <div class="chung-thanhtoan">
+                        @Html.TextBoxFor(n => n.DIENTHOAI, new { @class = "textboxchung", @placeholder = "Số điện thoại" })
+                    </div>
+                    <div class="chung-thanhtoan">
+                        @Html.TextBoxFor(n => n.DIACHI, new { @class = "textboxchung", @placeholder = "Địa chỉ" })
+                    </div>
+                    <div class="chung-thanhtoan height">
+                        <span class="khoangcach">Hình thức thanh toán:</span>
+                        @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.HTTT, new { @class = "danhmuc-padding" })
+                    </div>
+                    <div class="chung-thanhtoan height">
+                        <span class="khoangcach">Hình thức giao hàng:</span>
+                        @Html.DropDownList("MaGH", (IEnumerable<SelectListItem>)ViewBag.HTGH, new { @class = "danhmuc-padding" })
+                    </div>
+                    <div class="chung-thanhtoan">
+                        <input id="btnthanhtoan" type="submit" class="btn btn-success" value="Thanh toán" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

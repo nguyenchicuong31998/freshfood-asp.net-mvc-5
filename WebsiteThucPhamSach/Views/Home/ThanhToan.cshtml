@@ -5,6 +5,9 @@
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 <link href="~/Content/CssClient/CssGioHang.css" rel="stylesheet" />
+<link href="~/Content/CssClient/CssThanhToan.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Scripts/jquery-3.3.1.js"></script>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -55,7 +58,6 @@
                                                     </td>
                                                 </tr>
                                                 tong += cart.ThanhTien;
-
                                             }
                                         </tbody>
                                     </table>
@@ -69,54 +71,7 @@
                                 </div>
                             </div>
                         </section> <!--/#cart_items-->
-
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    @using (Html.BeginForm("ThanhToan", "Home", FormMethod.Post))
-                                    {
-                                        <div class="title-chung">Thông tin mua hàng</div>
-                                        <div class="congcu">
-                                            <div class="chung-thanhtoan">
-                                                <input name="name" class="textboxchung" placeholder="Họ và tên" value="@ViewBag.Name" />
-                                            </div>
-                                            <div class="chung-thanhtoan">
-                                                <input name="sdt" class="textboxchung" placeholder="Số điện thoại" value="@ViewBag.SDT"/>
-                                            </div>
-                                            <div class="chung-thanhtoan">
-                                                <input name="email" class="textboxchung" placeholder="Email" value="@ViewBag.Email" />
-                                            </div>
-                                            <div class="chung-thanhtoan">
-                                                <input name="diachi" class="textboxchung" placeholder="Địa chỉ" value="@ViewBag.DiaChi" />
-                                            </div>
-                                            <div class="chung-thanhtoan height">
-                                                <span class="khoangcach">Hình thức thanh toán:</span>
-                                                <select class="danhmuc-padding" id="drhinhthucthanhtoan" name="httt">
-                                                    <option name="httt" value="0">Thanh toán sau khi giao hàng</option>
-                                                    <option name="httt" value="1">Thanh toán bằng Paypal</option>
-                                                    <option name="httt" value="2">Thanh toán bằng Bảo kim</option>
-
-                                                </select>
-
-                                            </div>
-                                            <div class="chung-thanhtoan height">
-                                                <span class="khoangcach">Hình thức giao hàng:</span>
-                                                @{
-                                                    @Html.DropDownList("dropdownlist", new List<SelectListItem>
-                                                     {
-                                                         new SelectListItem {Text = "Giao trực tiếp", Value = "Giao trực tiếp"},
-                                                         new SelectListItem {Text = "Chuyển giao", Value = "Chuyển giao"}
-                                                      }, new { @class = "danhmuc-padding" })
-                                                }
-                                            </div>
-                                            <div class="chung-thanhtoan">
-                                                <input id="btnthanhtoan" type="submit" class="btn btn-success" value="Thanh toán" />
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                        </div>
+                        @Html.Action("ThanhToanPartial", "Home")
                     }
                     else
                     {
@@ -128,4 +83,3 @@
         </div>
     </div>
 </div>
-

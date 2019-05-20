@@ -57,3 +57,7 @@ td.cart_price {
             text-decoration: none;
             color: #9bd031;
         }
+.mid {
+    margin: 105px auto;
+    width: 18%;
+}

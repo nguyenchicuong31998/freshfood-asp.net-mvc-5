@@ -263,6 +263,25 @@ namespace WebsiteThucPhamSach.Controllers
         {
             return View();
         }
+
+
+        public PartialViewResult ThanhToanPartial()
+        {
+            int MaKH = int.Parse(Session["MAKH"].ToString());
+            var KhachHang = db.KHACHHANGs.SingleOrDefault(n => n.MAKH == MaKH);
+            List<HTThanhToanIteam> listHTThanhToan = new List<HTThanhToanIteam>();
+            listHTThanhToan.Add(new HTThanhToanIteam(1, "Thanh toán trước khi giao hàng"));
+            listHTThanhToan.Add(new HTThanhToanIteam(2, "Thanh toán Paypal"));
+            listHTThanhToan.Add(new HTThanhToanIteam(3, "Thanh toán Bảo Kim"));
+            List<HThucGiaoHang> listHTGiaoHang = new List<HThucGiaoHang>();
+            listHTGiaoHang.Add(new HThucGiaoHang(1, "Giao trực tiếp"));
+            listHTGiaoHang.Add(new HThucGiaoHang(2, "Chuyển giao"));
+            SelectList HTTT = new SelectList(listHTThanhToan, "Name", "Name");
+            SelectList HTGH = new SelectList(listHTGiaoHang, "NameGH", "NameGH");
+            ViewBag.HTTT = HTTT;
+            ViewBag.HTGH = HTGH;
+            return PartialView(KhachHang);
+        }
         [HttpGet]
         public ActionResult ThanhToan()
         {
@@ -274,12 +293,7 @@ namespace WebsiteThucPhamSach.Controllers
             }
             try
             {
-                int MaKH = int.Parse(Session["MAKH"].ToString());
-                var KH = db.KHACHHANGs.SingleOrDefault(n => n.MAKH == MaKH);
-                ViewBag.Name = KH.HOTEN;
-                ViewBag.SDT = KH.DIENTHOAI;
-                ViewBag.Email = KH.EMAIL;
-                ViewBag.DiaChi = KH.DIACHI;
+
             }
             catch (Exception ex)
             {
@@ -287,17 +301,19 @@ namespace WebsiteThucPhamSach.Controllers
             }
             return View(list);
         }
+        
         [HttpPost]
-        public ActionResult ThanhToan(string name, string email, string sdt, string diachi, DropDownList drop)
+        public ActionResult ThanhToan(FormCollection kh)
         {
             var donhang = new HOADON();
             donhang.MAKH = int.Parse(Session["MAKH"].ToString());
-            donhang.TENKH = name;
-            donhang.DIENTHOAI = sdt;
-            donhang.DIACHI = diachi;
-            //  donhang.HTTHANHTOAN = drop.SelectedItem.ToString();
-            donhang.HTGIAOHANG = drop.SelectedValue;
-            donhang.DONGIA = 1000;
+            donhang.TENKH = kh["HOTEN"].ToString();
+            donhang.DIENTHOAI = kh["DIENTHOAI"].ToString();
+            donhang.DIACHI = kh["DIACHI"].ToString();
+            donhang.NGAYDAT = DateTime.Now.Date;
+            donhang.HTTHANHTOAN = kh["Id"].ToString();
+            donhang.HTGIAOHANG = kh["MaGH"].ToString();
+            donhang.DONGIA = TongTien();
             try
             {
                 var MaKH = them(donhang);
@@ -311,15 +327,25 @@ namespace WebsiteThucPhamSach.Controllers
                     CTHOADON.DONGIA = item.GIASP;
                     CTHOADON.THANHTIEN = item.ThanhTien;
                     db.CTHOADONs.Add(CTHOADON);
-                    db.SaveChanges();
+                    db.SaveChanges();    
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
+            Session["GioHang"] = null;
             return Redirect("~/Home/TrangChu");
+        }
+        public decimal TongTien()
+        {
+            var ListGioHang=(List<GioHang>)Session["GioHang"];
+            decimal Tong = 0;
+            foreach(var item in ListGioHang)
+            {
+                Tong += item.ThanhTien;
+            }
+            return Tong;
         }
         public long them(HOADON hoadon)
         {
